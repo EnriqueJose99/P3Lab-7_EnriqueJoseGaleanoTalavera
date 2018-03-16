@@ -12,20 +12,20 @@ class Racional{
     Racional();
     Racional(int, int);
     //Numerador
-    void setNumerador();
-    int getNumerador(){return numerador;}
+
+    int getNumerador()const;
     //Denominador
-    void setDenominador();
-    int getDenominador(){return denominador;}
+
+    int getDenominador()const;
 
     const Racional operator +(const Racional&)const;
-    Racional operator +=(const Racional&)const;
+    Racional operator +=(const Racional&);
     const Racional operator -(const Racional&)const;
-    Racional operator -=(const Racional&)const;
+    Racional operator -=(const Racional&);
     const Racional operator *(const Racional&)const;
-    Racional operator *=(const Racional&)const;
+    Racional operator *=(const Racional&);
     const Racional operator /(const Racional&)const;
-    Racional operator /=(const Racional&)const;
-    
+    Racional operator /=(const Racional&);
+
 };
 #endif
