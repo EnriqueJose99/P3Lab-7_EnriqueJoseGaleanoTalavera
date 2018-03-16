@@ -21,11 +21,10 @@ int main(){
   ofstream fileRead;
   fileRead.open("log.txt", ios::app);
   vector<Racional*> rr;
-  while (opcion != 10) {
+  while (opcion != 11) {
     switch (opcion = menu()) {
       case 1:{
         char resp = ' ';
-        do {
           cout<<"Ingrese numerador: "<<endl;
           cin>>numeradorM;
           cout<<"Ingrese denominador: "<<endl;
@@ -34,9 +33,6 @@ int main(){
 
           rr.push_back(fracciones);
           cout<<"Fraccion creada exitosamente"<<endl;
-        } while(resp =='s' ||resp == 'S');
-        cout<<"desea continuar [s/n]"<<endl;
-        cin>>resp;
         break;
       }
       case 2:{
@@ -172,6 +168,12 @@ int main(){
         delete racionalDIVI2;
         break;
       }
+      case 10:{
+        for (int i = 0; i < rr.size(); i++) {
+          cout<<"Posiciones: "<<i<<" "<<rr[i]->getNumerador()<<"/"<<rr[i]->getDenominador()<<endl;
+        }
+        break;
+      }
     }
   }
 }
@@ -189,7 +191,8 @@ int menu(){
     cout<<"7. Multiplicacion y Asignacion"<<endl;
     cout<<"8. Division"<<endl;
     cout<<"9. Division y Asignacion"<<endl;
-    cout<<"10. SALIR"<<endl;
+    cout<<"10. Listar Fracciones"<<endl;
+    cout<<"11. Salir"<<endl;
     cout<<"Ingrese numero para ingresar a alguna opcion"<<endl;
     cin>> numberSelection;
     return numberSelection;
