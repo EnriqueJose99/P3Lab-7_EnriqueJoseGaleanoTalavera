@@ -17,7 +17,14 @@ int main(){
   int denominadorM = 0;
   int numeradorM1 = 0;
   int denominadorM1 = 0;
-
+  Racional* racional1;
+  Racional* racional2;
+  Racional* racionalRes1;
+  Racional* racionalRes2;
+  Racional* racionalMul1;
+  Racional* racionalMul2;
+  Racional* racionalDIVI1;
+  Racional* racionalDIVI2;
   ofstream fileRead;
   fileRead.open("log.txt", ios::app);
   vector<Racional*> rr;
@@ -29,12 +36,16 @@ int main(){
           cin>>numeradorM;
           cout<<"Ingrese denominador: "<<endl;
           cin>>denominadorM;
-          Racional* fracciones = new Racional(numeradorM, denominadorM);
-
-          rr.push_back(fracciones);
-          cout<<"Fraccion creada exitosamente"<<endl;
+          if (denominadorM == 0) {
+            cout<<"No se puede divir entre 0";
+          }else{
+            Racional* fracciones = new Racional(numeradorM, denominadorM);
+            rr.push_back(fracciones);
+            cout<<"Fraccion creada exitosamente"<<endl;
+          }
         break;
       }
+      //suma
       case 2:{
         for (int i = 0; i < rr.size(); i++) {
           cout<<"Pocision: "<<i<<" "<<rr[i]->getNumerador()<<"/"<<rr[i]->getDenominador()<<endl;
@@ -45,8 +56,8 @@ int main(){
         cin>>pos1;
         cout<<"Ingrese la posicion de la segunda fraccion: "<<endl;
         cin>>pos2;
-        Racional* racional1 = rr[pos1];
-        Racional* racional2 = rr[pos2];
+        racional1 = rr[pos1];
+        racional2 = rr[pos2];
         cout<<"Primera Fracion"<<endl;
         cout<<racional1->getNumerador()<<"/"<<racional1->getDenominador()<<endl;
         cout<<"Segunda Fracion"<<endl;
@@ -63,11 +74,41 @@ int main(){
           << racional2->getNumerador()<<"/"<<racional2->getDenominador()<<" = "<< total.getNumerador()
           <<"/"<<total.getDenominador()<<endl;
         }
+        break;
+      }
+      //suma Asignacion
+      case 3:{
+        for (int i = 0; i < rr.size(); i++) {
+          cout<<"Pocision: "<<i<<" "<<rr[i]->getNumerador()<<"/"<<rr[i]->getDenominador()<<endl;
+        }
+        int pos1;
+        int pos2;
+        cout<<"Ingrese la posicion de la primera fraccion: "<<endl;
+        cin>>pos1;
+        cout<<"Ingrese la posicion de la segunda fraccion: "<<endl;
+        cin>>pos2;
+        racional1 = rr[pos1];
+        racional2 = rr[pos2];
+        cout<<"Primera Fraccion"<<endl;
+        cout<<racional1->getNumerador()<<"/"<<racional1->getDenominador()<<endl;
+        cout<<"Segunda Fraccion"<<endl;
+        cout<<racional2->getNumerador()<<"/"<<racional2->getDenominador()<<endl;
+        *racional1 += *racional2;
+        cout<<"La suma de las divisiones son: "<<endl;
+        cout<<racional1->getNumerador() <<"/"<< racional1->getDenominador()<<endl;
+
+        if (racional1->getNumerador() == 0) {
+          fileRead<<racional1->getNumerador()<<"/"<<racional1->getDenominador()<<" + "
+          << racional2->getNumerador()<<"/"<<racional2->getDenominador()<<" = "<< " 0 "<<endl;
+        }else{
+          fileRead<<"Esto significa += "<<racional1->getNumerador()<<"/"<<racional1->getDenominador()<<endl;
+        }
         delete racional1;
         delete racional2;
 
         break;
       }
+      //Resta
       case 4:{
         for (int i = 0; i < rr.size(); i++) {
           cout<<"Pocision: "<<i<<" "<<rr[i]->getNumerador()<<"/"<<rr[i]->getDenominador()<<endl;
@@ -78,8 +119,8 @@ int main(){
         cin>>pos1;
         cout<<"Ingrese la posicion de la segunda fraccion: "<<endl;
         cin>>pos2;
-        Racional* racionalRes1 = rr[pos1];
-        Racional* racionalRes2 = rr[pos2];
+        racionalRes1 = rr[pos1];
+      racionalRes2 = rr[pos2];
         cout<<"Primera Fracion"<<endl;
         cout<<racionalRes1->getNumerador()<<"/"<<racionalRes1->getDenominador()<<endl;
         cout<<"Segunda Fracion"<<endl;
@@ -102,6 +143,39 @@ int main(){
 
         break;
       }
+      //resta Asignacion
+      case 5:{
+        for (int i = 0; i < rr.size(); i++) {
+          cout<<"Pocision: "<<i<<" "<<rr[i]->getNumerador()<<"/"<<rr[i]->getDenominador()<<endl;
+        }
+        int pos1;
+        int pos2;
+        cout<<"Ingrese la posicion de la primera fraccion: "<<endl;
+        cin>>pos1;
+        cout<<"Ingrese la posicion de la segunda fraccion: "<<endl;
+        cin>>pos2;
+        racionalRes1 = rr[pos1];
+        racionalRes2 = rr[pos2];
+        cout<<"Primera Fracion"<<endl;
+        cout<<racionalRes1->getNumerador()<<"/"<<racionalRes1->getDenominador()<<endl;
+        cout<<"Segunda Fracion"<<endl;
+        cout<<racionalRes2->getNumerador()<<"/"<<racionalRes2->getDenominador()<<endl;
+        (*racionalRes1) -= (*racionalRes2);
+        cout<<"La resta de las divisiones son: "<<endl;
+        cout<< racionalRes1->getNumerador()<<"/"<<racionalRes1->getDenominador()<<endl;
+        if (racionalRes1->getNumerador() == 0) {
+          fileRead<<racionalRes1->getNumerador()<<"/"<<racionalRes1->getDenominador()<<" - "
+          << racionalRes2->getNumerador()<<"/"<<racionalRes2->getDenominador()<<" = "
+          << " 0 "<<endl;
+          /* code */
+        }else{
+             fileRead<<"Esto significa -="<<racionalRes1->getNumerador()<<"/"<<racionalRes1->getDenominador()<<endl;
+        }
+        delete racionalRes1;
+        delete racionalRes2;
+        break;
+      }
+      //Multiplicacion
       case 6:{
         for (int i = 0; i < rr.size(); i++) {
           cout<<"Pocision: "<<i<<" "<<rr[i]->getNumerador()<<"/"<<rr[i]->getDenominador()<<endl;
@@ -112,8 +186,8 @@ int main(){
         cin>>pos1;
         cout<<"Ingrese la posicion de la segunda fraccion: "<<endl;
         cin>>pos2;
-        Racional* racionalMul1 = rr[pos1];
-        Racional* racionalMul2 = rr[pos2];
+        racionalMul1 = rr[pos1];
+        racionalMul2 = rr[pos2];
         cout<<"Primera Fracion"<<endl;
         cout<<racionalMul1->getNumerador()<<"/"<<racionalMul1->getDenominador()<<endl;
         cout<<"Segunda Fracion"<<endl;
@@ -134,6 +208,36 @@ int main(){
         delete racionalMul2;
         break;
       }
+      case 7:{
+        for (int i = 0; i < rr.size(); i++) {
+          cout<<"Pocision: "<<i<<" "<<rr[i]->getNumerador()<<"/"<<rr[i]->getDenominador()<<endl;
+        }
+        int pos1;
+        int pos2;
+        cout<<"Ingrese la posicion de la primera fraccion: "<<endl;
+        cin>>pos1;
+        cout<<"Ingrese la posicion de la segunda fraccion: "<<endl;
+        cin>>pos2;
+        racionalMul1 = rr[pos1];
+        racionalMul2 = rr[pos2];
+        cout<<"Primera Fracion"<<endl;
+        cout<<racionalMul1->getNumerador()<<"/"<<racionalMul1->getDenominador()<<endl;
+        cout<<"Segunda Fracion"<<endl;
+        cout<<racionalMul2->getNumerador()<<"/"<<racionalMul2->getDenominador()<<endl;
+        (*racionalMul1) *= (*racionalMul2);
+        cout<<"La Multiplicacion de las divisiones son: "<<endl;
+        cout<< racionalMul1->getNumerador()<<"/"<<racionalMul1->getDenominador()<<endl;
+        if (racionalMul1->getNumerador() == 0) {
+          fileRead<<racionalMul1->getNumerador()<<"/"<<racionalMul1->getDenominador()<<" * "
+          << racionalMul2->getNumerador()<<"/"<<racionalMul2->getDenominador()<<" = "<<" 0 "<<endl;
+        }else{
+          fileRead<<"Esto significa *= "<<racionalMul1->getNumerador()<<"/"<<racionalMul1->getDenominador()<<endl;
+        }
+        delete racionalMul1;
+        delete racionalMul2;
+        break;
+      }
+      //Division
       case 8:{
         for (int i = 0; i < rr.size(); i++) {
           cout<<"Pocision: "<<i<<" "<<rr[i]->getNumerador()<<"/"<<rr[i]->getDenominador()<<endl;
@@ -144,8 +248,8 @@ int main(){
         cin>>pos1;
         cout<<"Ingrese la posicion de la segunda fraccion: "<<endl;
         cin>>pos2;
-        Racional* racionalDIVI1 = rr[pos1];
-        Racional* racionalDIVI2 = rr[pos2];
+        racionalDIVI1 = rr[pos1];
+        racionalDIVI2 = rr[pos2];
         cout<<"Primera Fracion"<<endl;
         cout<<racionalDIVI1->getNumerador()<<"/"<<racionalDIVI1->getDenominador()<<endl;
         cout<<"Segunda Fracion"<<endl;
@@ -168,10 +272,53 @@ int main(){
         delete racionalDIVI2;
         break;
       }
+      //Division y Asignacion
+      case 9:{
+        for (int i = 0; i < rr.size(); i++) {
+          cout<<"Pocision: "<<i<<" "<<rr[i]->getNumerador()<<"/"<<rr[i]->getDenominador()<<endl;
+        }
+        int pos1;
+        int pos2;
+        cout<<"Ingrese la posicion de la primera fraccion: "<<endl;
+        cin>>pos1;
+        cout<<"Ingrese la posicion de la segunda fraccion: "<<endl;
+        cin>>pos2;
+        racionalDIVI1 = rr[pos1];
+        racionalDIVI2 = rr[pos2];
+        cout<<"Primera Fracion"<<endl;
+        cout<<racionalDIVI1->getNumerador()<<"/"<<racionalDIVI1->getDenominador()<<endl;
+        cout<<"Segunda Fracion"<<endl;
+        cout<<racionalDIVI2->getNumerador()<<"/"<<racionalDIVI2->getDenominador()<<endl;
+        (*racionalDIVI1) / (*racionalDIVI2);
+        cout<<"La Division de las divisiones son: "<<endl;
+        cout<< racionalDIVI1->getNumerador()<<"/"<<racionalDIVI1->getDenominador()<<endl;
+        if (racionalDIVI1->getNumerador() == 0) {
+          fileRead<<racionalDIVI1->getNumerador()<<"/"<<racionalDIVI1->getDenominador()<<" / "
+          << racionalDIVI2->getNumerador()<<"/"<<racionalDIVI2->getDenominador()<<" = "
+          << " 0 "<<endl;
+          /* code */
+        }else{
+          fileRead<<"Esto significa /= "<<racionalDIVI1->getNumerador()<<"/"<<racionalDIVI1->getDenominador()<<endl;
+        }
+        break;
+
+
+      }
       case 10:{
         for (int i = 0; i < rr.size(); i++) {
           cout<<"Posiciones: "<<i<<" "<<rr[i]->getNumerador()<<"/"<<rr[i]->getDenominador()<<endl;
         }
+        break;
+      }
+      case 11:{
+        delete racional1;
+        delete racional2;
+        delete racionalRes1;
+        delete racionalRes2;
+        delete racionalMul1;
+        delete racionalMul2;
+        delete racionalDIVI1;
+        delete racionalDIVI2;
         break;
       }
     }
@@ -182,6 +329,7 @@ int menu(){
   int flag =  0 ;
   int numberSelection = 0;
   while (flag == 0) {
+    cout<<" "<<endl;
     cout<<"1. Crear Fraciones"<<endl;
     cout<<"2. Suma"<<endl;
     cout<<"3. Suma y Asignacion"<<endl;

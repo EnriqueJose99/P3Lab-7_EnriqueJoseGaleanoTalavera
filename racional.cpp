@@ -36,6 +36,21 @@ const Racional Racional::operator +(const Racional& rightValue)const{
   Racional* s = new Racional(numeradorS, denominadorS);
   return *s;
 }
+ Racional Racional::operator +=(const Racional& rightValue){
+  int numeradorS;
+  numeradorS = (this->numerador*rightValue.getDenominador())+
+  (rightValue.getNumerador()*this->denominador);
+  int denominadorS;
+  denominadorS = (this->denominador*rightValue.getDenominador());
+  //Racional* total = new Racional();
+  numerador = numeradorS;
+  denominador = denominadorS;
+  Racional* i = new Racional(numerador, denominador);
+
+  return *i;
+}
+
+
 
 const Racional Racional::operator -(const Racional& rightValue)const{
   int numeradorRE;
@@ -48,6 +63,19 @@ const Racional Racional::operator -(const Racional& rightValue)const{
   return *r;
 
 }
+Racional Racional::operator -=(const Racional& rightValue){
+ int numeradorRes;
+ numeradorRes = (this->numerador*rightValue.getDenominador())-
+ (rightValue.getNumerador()*this->denominador);
+ int denominadorRes;
+ denominadorRes = (this->denominador*rightValue.getDenominador());
+ //Racional* total = new Racional();
+ numerador = numeradorRes;
+ denominador = denominadorRes;
+ Racional* ir = new Racional(numerador, denominador);
+
+ return *ir;
+}
 const Racional Racional::operator /(const Racional& rightValue)const{
   int numeradorDI;
   numeradorDI = (this->numerador*rightValue.getDenominador());
@@ -56,6 +84,18 @@ const Racional Racional::operator /(const Racional& rightValue)const{
   Racional* d = new Racional(numeradorDI, denominadorDI);
   return *d;
 }
+
+Racional Racional::operator /=(const Racional& rightValue){
+  int numeradorDI;
+  numeradorDI = (this->numerador*rightValue.getDenominador());
+  int denominadorDI;
+  denominadorDI = (this->denominador*rightValue.getNumerador());
+  numerador = numeradorDI;
+  denominador = denominadorDI;
+  Racional* id = new Racional(numeradorDI, denominadorDI);
+  return *id;
+}
+
 const Racional Racional::operator *(const Racional& rightValue)const{
   int numeradoMU;
   numeradoMU = (this->numerador*rightValue.getNumerador());
@@ -63,4 +103,14 @@ const Racional Racional::operator *(const Racional& rightValue)const{
   denominadorMU = (this->denominador*rightValue.getDenominador());
   Racional* m = new Racional(numeradoMU, denominadorMU);
   return *m;
+}
+Racional Racional::operator *=(const Racional& rightValue){
+  int numeradoMU;
+  numeradoMU = (this->numerador*rightValue.getNumerador());
+  int denominadorMU;
+  denominadorMU = (this->denominador*rightValue.getDenominador());
+  numerador = numeradoMU;
+  denominador = denominadorMU;
+  Racional* im = new Racional(numeradoMU, denominadorMU);
+  return *im;
 }
