@@ -103,9 +103,6 @@ int main(){
         }else{
           fileRead<<"Esto significa += "<<racional1->getNumerador()<<"/"<<racional1->getDenominador()<<endl;
         }
-        delete racional1;
-        delete racional2;
-
         break;
       }
       //Resta
@@ -138,9 +135,6 @@ int main(){
                      << racionalRes2->getNumerador()<<"/"<<racionalRes2->getDenominador()<<" = "
                      << totalResta.getNumerador()<<"/"<<totalResta.getDenominador()<<endl;
         }
-        delete racionalRes1;
-        delete racionalRes2;
-
         break;
       }
       //resta Asignacion
@@ -171,8 +165,6 @@ int main(){
         }else{
              fileRead<<"Esto significa -="<<racionalRes1->getNumerador()<<"/"<<racionalRes1->getDenominador()<<endl;
         }
-        delete racionalRes1;
-        delete racionalRes2;
         break;
       }
       //Multiplicacion
@@ -204,8 +196,6 @@ int main(){
           << totalMultiplicacion.getNumerador()<<"/"
           <<totalMultiplicacion.getDenominador()<<endl;
         }
-        delete racionalMul1;
-        delete racionalMul2;
         break;
       }
       case 7:{
@@ -233,8 +223,6 @@ int main(){
         }else{
           fileRead<<"Esto significa *= "<<racionalMul1->getNumerador()<<"/"<<racionalMul1->getDenominador()<<endl;
         }
-        delete racionalMul1;
-        delete racionalMul2;
         break;
       }
       //Division
@@ -268,8 +256,6 @@ int main(){
           << totalDivision.getNumerador()<<"/"
           <<totalDivision.getDenominador()<<endl;
         }
-        delete racionalDIVI1;
-        delete racionalDIVI2;
         break;
       }
       //Division y Asignacion
