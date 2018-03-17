@@ -297,14 +297,33 @@ int main(){
         break;
       }
       case 11:{
-        delete racional1;
-        delete racional2;
-        delete racionalRes1;
-        delete racionalRes2;
-        delete racionalMul1;
-        delete racionalMul2;
-        delete racionalDIVI1;
-        delete racionalDIVI2;
+        if (racional1!= NULL) {
+            delete racional1;
+        }
+        if (racional2!= NULL) {
+            delete racional2;
+        }
+        if (racionalRes1!= NULL) {
+            delete racionalRes1;
+        }
+        if (racionalRes2!= NULL) {
+            delete racionalRes2;
+        }
+        if (racionalMul1!= NULL) {
+            delete racionalMul1;
+        }
+        if (racionalMul2!= NULL) {
+            delete racionalMul2;
+        }
+        if (racional1!= NULL) {
+            delete racional1;
+        }
+        if (racionalDIVI1!= NULL) {
+            delete racionalDIVI1;
+        }
+        if (racionalDIVI2!= NULL) {
+            delete racionalDIVI2;
+        }
         break;
       }
     }
